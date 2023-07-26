@@ -1,7 +1,7 @@
 # Curiosity Rover
 This is a project inspired by the Mathworks Matlab - Excellence in Innovation Repository :
 https://github.com/Autonomousanz/Autonomous-Navigation-in-Rough-Terrain.git
-
+![](https://i.imgur.com/sSvI0MY.png)
 ## Description :
 The project is an experiment of finding the shortest path to a given set of start and end points namely waypoints using various Path planning algorithms in a _rough terrain_ and then deploying these waypoints on the cu robot. Mainly the tools used were MATLAB for generating the waypoints using a map of the given environment in pgm file and then converting it into occupancyMap or binaryoccupancyMap, further feeding this shortest path to a robot in Gazebo ROS simulation using the Simulink model.
 
