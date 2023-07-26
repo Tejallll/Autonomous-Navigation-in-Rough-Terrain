@@ -1,49 +1,26 @@
-# Turtlebot
-This is project inspired from the Mathworks Matlab - Excellence in Innovation Repository :
+# Curiosity Rover
+This is a project inspired by the Mathworks Matlab - Excellence in Innovation Repository :
 https://github.com/Autonomousanz/Autonomous-Navigation-in-Rough-Terrain.git
-## Installation :
-You can install turtlebot by following
-[Turtlebot3 Installation Tutorial.](https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/)
-
-SLAM Simulation
-1. Launch Simulation World -<br>
-`$ export TURTLEBOT3_MODEL=burger`<br>
-`$ roslaunch turtlebot3_gazebo turtlebot3_world.launch`: 
-3. Run SLAM Node -<br>
-`$ export TURTLEBOT3_MODEL=burger`<br>
-`$ roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=gmapping`
-4. Run Teleoperation Node -<br>
-  `$ export TURTLEBOT3_MODEL=burger`<br>
-`$ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch`
-6. Save Map -<br>
-`$ rosrun map_server map_saver -f ~/map`
 
 ## Description :
-The project is an experiment of finding the shortest path to a given set of start and end points namely waypoints using various Path planning algorithms in a plane terrain and then deploying these waypoints on the turtlebot robot. Mainly the tools used were MATLAB for generating the waypoints using a map of the given environment in pgm file and then converting it into occupancyMap or binaryoccupancyMap, further feeding this shortest path to a robot in Gazebo ROS simulation using the Simulink model.
-
-## Procedure :
-Following are the steps taken for running this project -
-1. Below is the environment suitable for the application - :
-![environment](matlab_turtlebot_world.png)
-
-2. Launching the robot in this environment using the launch file which contains the world file location in the catkin workspace.<br>
-`$ export TURTLEBOT3_MODEL=burger`<br>
-`$ roslaunch turtlebot3_gazebo turtlebot3_world.launch`: 
-  
-3. Generate a pgm file through slam mapping of this environment.
-
-![map pgm file](map.pgm)
-
-4. Once the pgm file or occupancyMap is available, use a matlab mlx script of the planner that we want to test (A*, RRT planner, RRT* planner, Hybride A*) to generate a path using particular algorithm.
-
-![Planner path generated](https://github.com/Autonomousanz/Autonomous-Navigation-in-Rough-Terrain/blob/master/Pictures/Picture1.jpg)
-
-5. Once the waypoints were created, the final point was designated as the goal of the trajectory. This goal point needed to be converted back into Gazebo coordinates. To achieve this, the mathworks path following with obstacle avoidance slx file was employed. This file took the goal point as input and generated the corresponding velocity upon connection with the Gazebo simulation. To establish a connection with the Turtlebot in the Gazebo environment, the command "rosinit" was initialized in the command line of Matlab, which set up the ROS master connection.
-6.With everything in place, the robot commenced traversing the given path and aimed to reach the goal set within the Gazebo environment once the Simulink model ran successfully.
+The project is an experiment of finding the shortest path to a given set of start and end points namely waypoints using various Path planning algorithms in a _rough terrain_ and then deploying these waypoints on the cu robot. Mainly the tools used were MATLAB for generating the waypoints using a map of the given environment in pgm file and then converting it into occupancyMap or binaryoccupancyMap, further feeding this shortest path to a robot in Gazebo ROS simulation using the Simulink model.
 
 
+## Installation and Set-Up :
+We expanded upon an existing simulation of NASA’s Curiosity rover made for ROS (Robot Operating System) and Gazebo. And enhanced the accuracy of the virtual rover by adding more sensors to Rover.
+[Reference Link]([https://markgatland.com/post/2022-curiosity/](https://discourse.ros.org/t/the-nasa-curiosity-rover-rosject-is-now-open-source/7635))
 
+The folder, `curiosity_mars_rover_ws`, is a Catkin workspace. The `src/` folder contains the five ROS packages developed. They are based on the original `curiosity_mars_rover_description` package available from [Here](https://bitbucket.org/theconstructcore/curiosity_mars_rover/src/master/):
 
+ - `curiosity_mars_rover_gazebo`:              Launches a Curiosity Mars rover simulation using the Gazebo simulator as an environment      
+ - `curiosity_mars_rover_description`:         Describes the simulated rover using Collada 3D models and URDF descriptions
+ - `curiosity_mars_rover_control`:             Enables teleoperation of the rover via command-line interfaces and ROS messages
+ - `curiosity_mars_rover_navigation`:          Enables autonomous navigation using the move_base ROS package
+ - `curiosity_mars_rover_viz`:                 Launches a web application for visualisation and control of the rover in VR
+
+You will be able to run 'roslaunch' commands, for example:
+`roslaunch curiosity_mars_rover_gazebo main_mars_terrain.launch`
+![Screenshot of RViz](Rvizss.png)
 
 
 
