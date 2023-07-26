@@ -1,16 +1,25 @@
-# Autonomous-Navigation-in-Rough-Terrain
-
-
+# Turtlebot
 This is project inspired from the Mathworks Matlab - Excellence in Innovation Repository :
-https://github.com/mathworks/MathWorks-Excellence-in-Innovation.git
-The details of the project is illustrated on the project 209 readme with A* Path planning and obstacle avoidance in a warehouse example.
+https://github.com/mathworks/MathWorks-Excellence-in-Innovation.git.
 
-## Motivation :
-Autonomous navigation on off-road environment such as agricultural lands is significant in the development of autonomous vehicles.  Off-road terrain brings alot of complex problems such as uneven-ground with uncertain paths for an autonomous vehicle to traverse. In order to overcome these limitations a robust path planning algorithms and dynamic obstacle avoidance model must be deployed on the vehicles. Navigating complex terrain at speed and with minimal human supervision is a major challenge for developing such systems.
+## Installation :
+You can install turtlebot by following
+[Turtlebot3 Installation Tutorial.](https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/)
 
+SLAM Simulation
+1. Launch Simulation World -<br>
+`$ export TURTLEBOT3_MODEL=burger`<br>
+`$ roslaunch turtlebot3_gazebo turtlebot3_world.launch`: 
+3. Run SLAM Node -<br>
+`$ export TURTLEBOT3_MODEL=burger`<br>
+`$ roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=gmapping`
+4. Run Teleoperation Node -<br>
+  `$ export TURTLEBOT3_MODEL=burger`<br>
+`$ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch`
+6. Save Map -<br>
+`$ rosrun map_server map_saver -f ~/map`
 
 ## Description :
-
 The project is an experiment of finding the shortest path to a given set of start and end points namely waypoints using RRT* Path planning algorithm in a rough terrain and then deploying these waypoints on the turtlebot robot. Mainly the tools used were MATLAB for generating the waypoints using a map of the given environment in pgm file, further more feeding this shortest path to a robot in Gazebo Ros simulation using the simulink model.
 
 ## Procedure :
